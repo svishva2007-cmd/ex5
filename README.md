@@ -35,21 +35,24 @@ Publish the website in the given URL.
 ## PROGRAM :
 
 ~~~
-
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
 <style>
+/* ==== PAGE BACKGROUND ==== */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #3cff00ff, #ffffffff);
+    background: linear-gradient(135deg, #0088ffd4, #00ff40b0);
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+/* ==== OUTER CARD BOX ==== */
 .box {
     width: 380px;
     padding: 20px;
@@ -58,19 +61,25 @@ body {
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
 }
+
+/* ==== HEADER ==== */
 h1 {
     color: #fff;
     text-align: center;
     padding-bottom: 10px;
     font-size: 28px;
 }
+
+/* ==== FORM ELEMENT WRAPPER ==== */
 .formelt {
     color: #fff;
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 12px;
     margin-bottom: 10px;
     text-align: center;
 }
+
+/* ==== INPUT BOX STYLE ==== */
 input[type="text"] {
     width: 70%;
     padding: 8px;
@@ -78,9 +87,11 @@ input[type="text"] {
     border-radius: 8px;
     border: none;
     outline: none;
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
 }
+
+/* ==== GRADIENT BUTTON ==== */
 input[type="submit"] {
     background: linear-gradient(45deg, #00ff95, #00d4ff);
     padding: 10px 20px;
@@ -89,7 +100,7 @@ input[type="submit"] {
     font-weight: bold;
     border-radius: 10px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 18px;
     transition: 0.3s;
 }
 
@@ -98,44 +109,51 @@ input[type="submit"]:hover {
     box-shadow: 0px 0px 12px #00ffd5;
 }
 
+/* error text */
+.error {
+    color: #ffdddd;
+    font-size: 14px;
+    margin-top: 6px;
+    text-align: center;
+}
 </style>
 </head>
 
 <body>
 <div class="box">
-<h1>Area of Rectangle</h1>
+<h1>Power Calculator</h1>
 
 <form method="POST">
-{% csrf_token %}
+    {% csrf_token %}
 
-<div class="formelt">
-    Length :
-    <br>
-    <input type="text" name="length" value="{{l}}"> (m)
-</div>
+    <div class="formelt">
+        Resistance (R) :<br>
+        <input type="text" name="resistance" value="{{R}}"> Ω
+    </div>
 
-<div class="formelt">
-    Breadth :
-    <br>
-    <input type="text" name="breadth" value="{{b}}"> (m)
-</div>
+    <div class="formelt">
+        Current (I) :<br>
+        <input type="text" name="current" value="{{I}}"> A
+    </div>
 
-<div class="formelt">
-    <input type="submit" value="Calculate">
-</div>
+    <div class="formelt">
+        <input type="submit" value="Calculate">
+    </div>
 
-<div class="formelt">
-    Area :
-    <br>
-    <input type="text" name="area" value="{{area}}"> m<sup>2</sup>
-</div>
+    <div class="formelt">
+        Power (P = I²·R) :<br>
+        <input type="text" name="power" value="{{power}}"> W
+    </div>
+
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
 
 </form>
 </div>
 
 </body>
 </html>
-
 ~~~
 
 ## SERVER SIDE PROCESSING:
@@ -144,7 +162,7 @@ input[type="submit"]:hover {
 
 ## HOMEPAGE:
 
-![alt text](<Screenshot 2025-12-12 134434.png>)
+<img width="1919" height="928" alt="image" src="https://github.com/user-attachments/assets/83886435-4011-40e1-9322-9539cb1a4e68" />
 
-## RESULT:
+
 The program for performing server side processing is completed successfully.
